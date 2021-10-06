@@ -1,4 +1,4 @@
-'''Creating a deposit function
+'''16.1Creating a deposit function
 Now it's time to get our deposit action working again. Because this is a goal tracking app, it might be nice if we had some motivational messages that could appear in the message_text area when the user deposits money. We could also have some encouraging ones for when they withdraw money, to help them stay on track.
 
 Let's add some messages before we start writing our deposit function, and then we can pick one at random when the user successfully deposits money.

@@ -23,7 +23,6 @@ Public
 Is the method for updating the user's details public or private?
 Public
 '''
-
 import datetime
 class Patient:
     """A class for storing and updating patient details including immunisation status"""

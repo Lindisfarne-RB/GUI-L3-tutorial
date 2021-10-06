@@ -1,4 +1,15 @@
+'''
+Fixing up the feedback messages
+The deposit() method in our class checks if the amount is greater than zero, so if the deposit is unsuccessful we say Please enter a positive number.
 
+The withdraw() method, on the other hand, also checks if the amount is greater than the account balance, and returns False if there's not enough money in the account, so we will want our error message to say something like that. We'll also need to edit the confirmation message.
+
+CREATE
+In the if branch inside the withdraw_money() function, edit the string so that it says Success! Total of ${} withdrawn from {}.
+Edit the error message in the else branch so that it says Not enough money in {} or not a valid amount and format it with the name of the account.
+(Optional) Format the amount withdrawn to 2dp.
+
+'''
 ####################  IMPORTS  #######################
 from tkinter import *
 from tkinter import ttk

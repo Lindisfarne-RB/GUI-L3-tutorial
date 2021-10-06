@@ -1,4 +1,4 @@
-'''LEARN
+'''16.4LEARN
 Adding an area for feedback messages
 When our user clicks submit, it is good practice to tell them what is going on. We know their deposit can be successful or unsuccessful, so it would be good to give them a relevant message.
 
@@ -12,10 +12,7 @@ Below that, set() that variable temporarily to Testing so that we can see the la
 On the next line, create a new ttk Label called action_feedback_label with bottom_frame as the parent, and action_feedback as the textvariable.
 Place the action_feedback_label into the grid at row 7, column 0 and with a columnspan of 2 so that it fills the width.
 Click RUN and make sure you can see the word Testing below the submit button.
-
-Go to profile page
-Need help?
-How can we help you?
+
 '''
 ####################  IMPORTS  #######################
 from tkinter import *

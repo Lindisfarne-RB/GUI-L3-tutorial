@@ -1,28 +1,25 @@
-'''15.4Updating the GUI label with the details
-The last thing we need to do with this function is update the account_details variable so that our GUI label will show the changes. We will also want to run this function when our program loads to get the initial details on the screen.
+'''17.3Giving the character more personality
+Our mentor character can now give us a range of messages depending on whether we are depositing or withdrawing money. Wouldn't it be nice if we could make it look happy or sad too?
 
-Let's take a look at some pseudocode for this last step:
-Set total_balance to 0
-Set balance_string to ""
+We've added 2 more image files you can use - /images/python/happy.png and /images/python/sad.png:
 
-For each account in account list
-  Get the account progress
-  Add to balance string the formatted name, balance, progress and goal
-  Add the balance to the total balance
 
-Add the total balance to the balance string
-Set the account details variable to the balance string
+
+We will need to create PhotoImage() variables storing these images, and then swap the images out in our deposit_money() and withdraw_money() functions.
+
 CREATE
-Add to the balance_string this string: \nTotal balance: ${} formatted with the total_balance variable.
-Use .set() to update the account_details variable and store the balance_string in there.
-Scroll down and find the last line where root.mainloop() is called. Call the update_balance() function just before this to put the initial details into the label.
-Click RUN to see the new details label.
-(Optional) Format the total balance output to 2dp.
+Find where the neutral_image is created, around line 109.
+Below this, create a new PhotoImage() called happy_image with the file set to /images/python/happy.png.
+Below this, create another new PhotoImage() called sad_image with the file set to /images/python/sad.png.
 TIPS
+Next we'll change the images depending on which action the user carries out.
+
 '''
+
 ####################  IMPORTS  #######################
 from tkinter import *
 from tkinter import ttk
+import random
 
 
 ##################  CLASS CODE  ######################
@@ -66,6 +63,7 @@ def create_name_list():
         name_list.append(account.name)
     return name_list
 
+
 # Create a function that will update the balance.
 def update_balance():
     total_balance = 0
@@ -74,15 +72,41 @@ def update_balance():
     # Append each accounts balance, progress and goal to the label
     for account in account_list:
         progress = account.get_progress()
-        balance_string += "{}: ${:.2f} - {:.0f}% of ${} goal\n ".format(account.name, account.balance, progress,
+        balance_string += "{}: ${:.2f} - {:.0f}% of ${} goal\n".format(account.name, account.balance, progress,
                                                                        account.goal)
         total_balance += account.balance
-        balance_string += "\nTotal balance: ${:.2f}".format(total_balance)
-        account_details.set(balance_string)
+
+    balance_string += "\nTotal balance: ${:.2f}".format(total_balance)
+    account_details.set(balance_string)
+
+
+# Create the deposit function
+def deposit_money(account):
+    if account.deposit(amount.get()):
+        message = random.choice(deposit_messages)
+        message_text.set(message)
+        action_feedback.set("Success! Total of ${:.2f} deposited into {}".format(amount.get(), account.name))
+    else:
+        action_feedback.set("Please enter a positive number")
+
+
+# Create the withdraw function
+def withdraw_money(account):
+    if account.withdraw(amount.get()):
+        message = random.choice(withdraw_messages)
+        message_text.set(message)
+        action_feedback.set("Success! Total of ${:.2f} withdrawn from {}".format(amount.get(), account.name))
+    else:
+        action_feedback.set("Not enough money in {} or not a valid amount".format(account.name))
 
 
 # Set up Lists
 account_list = []
+deposit_messages = ["Well done, keep those deposits coming!", "You're making good progress!",
+                    "Awesome! It will feel great when you reach your goal"]
+withdraw_messages = ["Think about where else you might be able to save some money this week",
+                     "You're doing well, but try to keep that spending under control",
+                     "Tomorrow is another day for saving!"]
 
 # Create instances of the class
 savings = Account("Savings", 0, 1000)
@@ -108,6 +132,9 @@ message_label.grid(row=0, column=0, columnspan=2, padx=10, pady=10)
 
 # Create the PhotoImage and label to hold it
 neutral_image = PhotoImage(file="smiley.png")
+happy_image = PhotoImage(file="snapchat.png")
+sad_image = PhotoImage(file="snapchat.png")
+
 image_label = ttk.Label(top_frame, image=neutral_image)
 image_label.grid(row=1, column=0, columnspan=2, padx=10, pady=10)
 
@@ -165,11 +192,12 @@ amount_entry.grid(row=5, column=1, padx=10, pady=3, sticky="WE")
 submit_button = ttk.Button(bottom_frame, text="Submit", command=update_balance)
 submit_button.grid(row=6, column=0, columnspan=2, padx=10, pady=10)
 
+# Create an action feedback label
+action_feedback = StringVar()
+action_feedback.set("Testing")
+action_feedback_label = ttk.Label(bottom_frame, textvariable=action_feedback)
+action_feedback_label.grid(row=7, column=0, columnspan=2)
+
 # Run the mainloop
 update_balance()
 root.mainloop()
-
-
-
-
-

@@ -1,4 +1,5 @@
-'''Using the account names in the GUI code
+'''14.4
+Using the account names in the GUI code
 We have a list called account_list which contains our 3 account objects. We want to use this list like account_names on lines 93‑100 for the Combobox. However, the account_list is actually a list of objects, so if we plug that list straight in we will have some issues.
 
 CREATE

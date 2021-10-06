@@ -1,4 +1,4 @@
-'''LEARN
+'''14.3
 Getting the list of accounts from the objects
 Ok, so we have deleted the parts we don't need, now it's time to start linking up our OOP code with our GUI code. The first step will be to use the 3 account objects that we have made, in our GUI.
 

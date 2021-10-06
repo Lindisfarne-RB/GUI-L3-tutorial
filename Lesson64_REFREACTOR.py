@@ -1,4 +1,4 @@
-'''LEARN
+'''LEARN 15.1
 Getting the balance information from the objects
 In the last lesson we refactored our code so that the names of the accounts were generated from the objects themselves rather than being hard coded.
 
@@ -94,7 +94,7 @@ message_label = ttk.Label(top_frame, textvariable=message_text, wraplength=250)
 message_label.grid(row=0, column=0, columnspan=2, padx=10, pady=10)
 
 # Create the PhotoImage and label to hold it
-neutral_image = PhotoImage(file="/images/python/neutral.png")
+neutral_image = PhotoImage(file="smiley.png")
 image_label = ttk.Label(top_frame, image=neutral_image)
 image_label.grid(row=1, column=0, columnspan=2, padx=10, pady=10)
 

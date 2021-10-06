@@ -16,4 +16,19 @@ Click RUN to see the output.
 Note: __init__ is pronounced as dunder init, as the double underscore character is often referred to as a dunder.'''
 
 
+class Avenger:
+    def __init__(self, code_name, real_name):
+        self.code_name = code_name
+        self.real_name = real_name
+
+
+# Create an instance of the Avenger class
+avenger1 = Avenger("Bob", "Tom")
+avenger2 = Avenger("Dob", "Dom")
+
+# Print out some attributes
+print(avenger1.code_name)
+print(avenger2.real_name)
+
+
 

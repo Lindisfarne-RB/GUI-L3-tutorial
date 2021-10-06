@@ -1,4 +1,4 @@
-'''Writing the beginning of the deposit function
+'''16.2Writing the beginning of the deposit function
 We've got some messages to select from randomly when the user deposits or withdraws money, so now let's write our deposit function. We're going to call it deposit_money() and here is an outline of what we want it to do:
 Get the chosen account as a parameter
 If depositing the amount is successful
